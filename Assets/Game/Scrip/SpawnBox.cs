@@ -151,25 +151,31 @@ public class SpawnBox : MonoBehaviour
 
             if (listBox[i].postX - 1 >= 0)
             {
-                if (matrix[listBox[i].postX - 1, listBox[i].postY] == 0 || matrix[listBox[i].postX - 1, listBox[i].postY] == listBox[i].idBox)
-                {
+               
                     for (int a = 0; a < listBG.Count; a++)
                     {
                         if (listBG[a].post.x == listBox[i].postX - 1)
                         {
+                        if (matrix[listBox[i].postX - 1, listBox[i].postY] == 0 )
+                        {
                             listBox[i].transform.DOMoveX(listBG[a].gameObject.transform.position.x, 0.5f);
-
                             matrix[listBox[i].postX, listBox[i].postY] = 0;
                             matrix[listBox[i].postX - 1, listBox[i].postY] = 2;
                             listBox[i].postX -= 1;
-                            //Debug.Log("trước = " + matrix[listBox[i].postX, listBox[i].postY]);
-                            //Debug.Log("sau = " + matrix[listBox[i].postX - 1, listBox[i].postY]);
+                        }
+                        if (matrix[listBox[i].postX - 1, listBox[i].postY] == listBox[i].idBox)
+                        {
+                            listBox[i].transform.DOMoveX(listBG[a].gameObject.transform.position.x, 0.5f);
+                            matrix[listBox[i].postX, listBox[i].postY] = 0;
+                            matrix[listBox[i].postX - 1, listBox[i].postY] += listBox[i].idBox;
+                            listBox[i].postX -= 1;
+
 
                         }
-
                     }
-
-                }
+                    }
+                    
+             
             }
              
         }
