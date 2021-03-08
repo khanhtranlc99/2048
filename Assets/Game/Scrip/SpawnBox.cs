@@ -53,7 +53,7 @@ public class SpawnBox : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
-            _CheckTest();
+            _MoveLeft();
       
         }
     }
@@ -190,83 +190,65 @@ public class SpawnBox : MonoBehaviour
         Debug.Log("" + matrix[0, 0] + matrix[1, 0] + matrix[2, 0] + matrix[3, 0]);
        
     }
-    private void _CheckTest()
+    private void _MoveLeft()
     {
         for (int i = 0; i < matrix.GetLength(0); i++)
         {
             for (int j = 0; j < matrix.GetLength(1); j++)
-            {
-                //if (i - 4 >= 0)
-                //{
-                //    if (matrix[i, j] != 0 && matrix[i - 4, j] == 0)
-                //    {
-                //        var d = matrix[i, j];
-                //        matrix[i - 4, j] = d;
-                //        matrix[i, j] = 0;
-                //        _Move(i, j);
+            {           
+                if (i - 3 >= 0)
+                {
+                    var a = 3;
+                    if (matrix[i, j] != 0 && matrix[i - 3, j] == 0)
+                    {
+                        var d = matrix[i, j];
+                        matrix[i - 3, j] = d;
+                        matrix[i, j] = 0;
+                        _Move(i, j,a);
 
-                //    }
-                //    if (matrix[i, j] != 0 && matrix[i, j] == matrix[i - 4, j])
-                //    {
+                    }
+                    if (matrix[i, j] != 0 && matrix[i, j] == matrix[i - 3, j])
+                    {
 
-                //        var d = matrix[i, j];
-                //        matrix[i - 4, j] += d;
-                //        matrix[i, j] = 0;
-                //        _MoveDelete(i, j);
-
-
-                //    }
-                //}
-                //if (i - 3 >= 0)
-                //{
-                //    if (matrix[i, j] != 0 && matrix[i - 3, j] == 0)
-                //    {
-                //        var d = matrix[i, j];
-                //        matrix[i - 3, j] = d;
-                //        matrix[i, j] = 0;
-                //        _Move(i, j);
-
-                //    }
-                //    if (matrix[i, j] != 0 && matrix[i, j] == matrix[i - 3, j])
-                //    {
-
-                //        var d = matrix[i, j];
-                //        matrix[i - 3, j] += d;
-                //        matrix[i, j] = 0;
-                //        _MoveDelete(i, j);
+                        var d = matrix[i, j];
+                        matrix[i - 3, j] += d;
+                        matrix[i, j] = 0;
+                        _MoveDelete(i, j,a);
 
 
-                //    }
-                //}
-                //if (i - 2 >= 0)
-                //{
-                //    if (matrix[i, j] != 0 && matrix[i - 2, j] == 0)
-                //    {
-                //        var d = matrix[i, j];
-                //        matrix[i - 2, j] = d;
-                //        matrix[i, j] = 0;
-                //        _Move(i, j);
+                    }
+                }
+                if (i - 2 >= 0)
+                {
+                    var a = 2;
+                    if (matrix[i, j] != 0 && matrix[i - 2, j] == 0)
+                    {
+                        var d = matrix[i, j];
+                        matrix[i - 2, j] = d;
+                        matrix[i, j] = 0;
+                        _Move(i, j,a);
 
-                //    }
-                //    if (matrix[i, j] != 0 && matrix[i, j] == matrix[i - 2, j])
-                //    {
+                    }
+                    if (matrix[i, j] != 0 && matrix[i, j] == matrix[i - 2, j])
+                    {
 
-                //        var d = matrix[i, j];
-                //        matrix[i - 2, j] += d;
-                //        matrix[i, j] = 0;
-                //        _MoveDelete(i, j);
+                        var d = matrix[i, j];
+                        matrix[i - 2, j] += d;
+                        matrix[i, j] = 0;
+                        _MoveDelete(i, j,a);
 
 
-                //    }
-                //}
+                    }
+                }
                 if (i - 1 >= 0)
                 {
+                    var a = 1;
                     if (matrix[i, j] != 0 && matrix[i - 1, j] == 0)
                     {
                         var d = matrix[i, j];
                         matrix[i - 1, j] = d;
                         matrix[i, j] = 0;
-                        _Move(i, j);
+                        _Move(i, j, a);
 
                     }
                     if (matrix[i, j] != 0 && matrix[i, j] == matrix[i - 1, j])
@@ -275,7 +257,7 @@ public class SpawnBox : MonoBehaviour
                         var d = matrix[i, j];
                         matrix[i - 1, j] += d;
                         matrix[i, j] = 0;
-                        _MoveDelete(i, j);
+                        _MoveDelete(i, j,a);
 
 
                     }
@@ -286,7 +268,7 @@ public class SpawnBox : MonoBehaviour
         }
 
     }
-    private void _Move(int a, int b)
+    private void _Move(int a, int b , int c)
     {
   
         for (int i = 0; i < listBox.Count; i++)
@@ -295,9 +277,9 @@ public class SpawnBox : MonoBehaviour
             {
                 if (listBox[i].postX == a && listBox[i].postY == b)
                 {
-                    if (listBG[p].post.x == listBox[i].postX - 1)
+                    if (listBG[p].post.x == listBox[i].postX - c)
                     {
-                        listBox[i].postX -= 1;
+                        listBox[i].postX -= c;
                         listBox[i].transform.DOMoveX(listBG[p].transform.position.x, 0.5f).OnComplete(() => {/*SimplePool.Despawn(listBox[i].gameObject);*/ });
 
                     }
@@ -305,10 +287,10 @@ public class SpawnBox : MonoBehaviour
                 }
             }
         }
-        Debug.Log("trường hợp đằng sau không có gì");
+
 
     }
-    private void _MoveDelete(int a, int b)
+    private void _MoveDelete(int a, int b, int c)
     {
 
         for (int i = 0; i < listBox.Count; i++)
@@ -317,16 +299,16 @@ public class SpawnBox : MonoBehaviour
             {
                 if (listBox[i].postX == a && listBox[i].postY == b)
                 {
-                    if (listBG[p].post.x == listBox[i].postX - 1)
+                    if (listBG[p].post.x == listBox[i].postX - c)
                     {
-                        listBox[i].postX -= 1;
+                        listBox[i].postX -= c;
                         listBox[i].transform.DOMoveX(listBG[p].transform.position.x, 0.5f).OnComplete(() => { });
                      if ( destroyCorutin != null)
                         {
                             StopCoroutine(destroyCorutin);
                             destroyCorutin = null;
                         }
-                        destroyCorutin = StartCoroutine(_Destroy(listBox[i].gameObject));
+                        destroyCorutin = StartCoroutine(_Destroy(listBox[i].gameObject, listBox[i]));
                     }
 
                 }
@@ -335,64 +317,16 @@ public class SpawnBox : MonoBehaviour
         Debug.Log("haha2");
 
     }
-    private void _CheckDelete()
-    {
-       
-        foreach (BoxPlay item in listBox)
-        {
-            var T = listBox.Count;
-        }       
-    
-    }
+   
 
-    private IEnumerator _Destroy(GameObject a)
+    private IEnumerator _Destroy(GameObject a , BoxPlay b)
     {
         yield return new WaitForSeconds(0.5f);
         {
             SimplePool.Despawn(a);
             _CheckSprite();
+            listBox.Remove(b);
         }
     }
-    private void _SpawnTest()
-    {
-        for ( int i = 0; i < matrix.GetLength(0); i ++)
-        {
-             for (int j = 0; j < matrix.GetLength(1); j++)
-            {
-               for( int a = 0; a < testList.Count; a ++)
-                {
-                        if( matrix[i,j] > 0)
-                    {
-                        Debug.Log("hehe");
-                        if (matrix[i, j] == testList[i].idBox)
-                        {
-                           var c =  SimplePool.Spawn(testList[i], new Vector3(initPoint.x + i * amount, initPoint.y + j * amount, 0), Quaternion.identity);
-                            listBox.Add(c);
-                            Debug.Log("hehe");
-                      }               
-                    }
-                  
-                }
 
-
-            }
-        }
-
-         
-    }
-    private void _SpawnBoxPlayhaha(int a, int b)
-    {
-        Debug.Log("post = " + a + b);
-        if (matrix[a, b] > 0)
-        {
-            var c = SimplePool.Spawn(boxPlay, new Vector3(initPoint.x + a * amount, initPoint.y + b * amount, 0), Quaternion.identity).GetComponent<BoxPlay>();
-            c.transform.SetParent(parentBoxPlay.transform);
-            c.postX = a;
-            c.postY = b;
-
-            matrix[c.postX, c.postY] = 2;
-            listBox.Add(c);
-            _CheckSprite();
-        }
-    }
 }

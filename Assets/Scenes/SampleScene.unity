@@ -173,20 +173,7 @@ MonoBehaviour:
   parentBoxPlay: {fileID: 323424899}
   listBox: []
   listBG: []
-  testList:
-  - {fileID: 2940238354468980144, guid: ac69c78a8ab8eda4cb1f83f7887f75fb, type: 3}
-  - {fileID: 226520876672698678, guid: 0484869b999e0bb4aafedcb617025301, type: 3}
-  - {fileID: 7346746934807545864, guid: 255b0f84e32fbe042b04bfdd6f99439a, type: 3}
-  - {fileID: 7695895303169204760, guid: eb8f6440e2d7eca4c93517f6ee1d8190, type: 3}
-  - {fileID: 1280008246972006256, guid: 1702fc6b7998ae94597f6ecc07c9c6af, type: 3}
-  - {fileID: 6142290892895647342, guid: d1cf61f08cfe486428490215a07f56fe, type: 3}
-  - {fileID: 5907767133716738483, guid: 3c48f3eacf0132a4ab0ecd6e63ca40de, type: 3}
-  - {fileID: 8992414518216084998, guid: 61bc0b5f75068ca40b1a85be9a3695cb, type: 3}
-  - {fileID: 1675480003667901121, guid: b1f2db6a1a008b244aa344b89da76f95, type: 3}
-  - {fileID: 1966832187351793438, guid: c6929688036cdc244bb40dedac22ff54, type: 3}
-  - {fileID: 4859323926093827571, guid: 9d4bf20399717f24f90c10381e89dabf, type: 3}
-  - {fileID: 9217281368267070294, guid: e279c8094bfddbd499bf088662766d1a, type: 3}
-  - {fileID: 1049144899451873415, guid: 9bca8a12bc047654e9e2bd63892f0fdc, type: 3}
+  testList: []
 --- !u!4 &267023551
 Transform:
   m_ObjectHideFlags: 0
